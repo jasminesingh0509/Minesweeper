@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Row from "../Row";
 
 class Board extends Component {
   constructor(props) {
@@ -24,10 +25,27 @@ class Board extends Component {
         });
       }
     }
-    console.table(board);
+    console.log(board);
+    //after the board is created, add the mines randomly
+    for (let i = 0; i < props.mines; i++) {
+      let randomRow = Math.floor(Math.random() * props.rows);
+      let randomColumn = Math.floor(Math.random() * props.columns);
+
+      let cell = board[randomRow][randomColumn];
+      if (cell.hasMine) {
+        i--;
+      } else {
+        cell.hasMine = true;
+      }
+    }
+    return board;
+    // console.table(board);
   };
   render() {
-    return <div className="minesweeper"></div>;
+    let rows = this.state.rows.map((row, index) => {
+      return <Row cells={row} key={index} />;
+    });
+    return <div className="board"> {rows}</div>;
   }
 }
 export default Board;

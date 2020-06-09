@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Board from "./components/Board";
+import BoardHead from "./components/BoardHead";
 
 class Minesweeper extends Component {
   state = {
@@ -11,7 +12,12 @@ class Minesweeper extends Component {
   render() {
     return (
       <div className="minesweeper">
-        <Board rows={this.state.rows} columns={this.state.columns} />
+        <BoardHead time={this.state.time} flagCount={this.state.flags} />
+        <Board
+          rows={this.state.rows}
+          columns={this.state.columns}
+          mines={this.state.mines}
+        />
       </div>
     );
   }
