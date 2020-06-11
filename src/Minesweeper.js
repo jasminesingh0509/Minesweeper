@@ -16,6 +16,7 @@ class Minesweeper extends Component {
     mines: 40,
     status: "waiting",
     openCells: 0,
+    time: 0,
   };
 
   //function to add time when game is running
@@ -42,6 +43,9 @@ class Minesweeper extends Component {
         }
       );
     }
+    this.setState((prevState) => {
+      return { openCells: prevState.openCells + 1 };
+    });
   };
 
   render() {
