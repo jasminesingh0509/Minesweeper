@@ -26,10 +26,6 @@ class Minesweeper extends Component {
     }
   };
 
-  // setInterval = (fn, t) => {
-  //   this.intervals.push(this.setInterval(fn, t));
-  // };
-
   setInterval = (fn, t) => {
     this.intervals.push(setInterval(fn, t));
   };

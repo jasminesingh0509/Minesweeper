@@ -43,28 +43,42 @@ class Board extends Component {
 
   //function to check if the cell is open
   open = (cell) => {
-    let rows = this.state.rows;
-    let current = rows[cell.y][cell.x];
-    if (current.hasMine && this.props.openCells === 0) {
-      console.log("cell has mine");
-      let newRows = this.createBoard(this.props);
-      this.setState(
-        {
-          rows: newRows,
-        },
-        () => {
-          this.open(cell);
+    // function counts mines around an open cell, using promise.
+    let asyncCountMines = new Promise((resolve) => {
+      let mines = this.findMines(cell);
+      resolve(mines);
+    });
+
+    asyncCountMines.then((numberOfMines) => {
+      console.log("Be careful", numberOfMines, "mines near by!");
+      let rows = this.state.rows;
+      let current = rows[cell.y][cell.x];
+
+      if (current.hasMine && this.props.openCells === 0) {
+        console.log("The cell has a mine, you lose. Restart!");
+        let newRows = this.createBoard(this.props);
+        this.setState(
+          {
+            rows: newRows,
+          },
+          () => {
+            this.open(cell);
+          }
+        );
+      } else {
+        if (!cell.hasFlag && !current.isOpen) {
+          this.props.openCellClick();
+
+          current.isOpen = true;
+          current.count = numberOfMines;
+
+          this.setState({ rows });
+          if (!current.hasMine && numberOfMines === 0) {
+            this.findAroundCell(cell);
+          }
         }
-      );
-    } else {
-      if (!cell.hasFlag && !current.isOpen) {
-        this.props.openCellClick();
-
-        current.isOpen = true;
-
-        this.setState({ rows });
       }
-    }
+    });
   };
 
   //function to check if mines are surrounding a single cell
@@ -88,6 +102,26 @@ class Board extends Component {
       }
     }
     return minesProximity;
+  };
+
+  // go through each cell and open one by one until we find one with a mine
+  findAroundCell = (cell) => {
+    let rows = this.state.rows;
+
+    for (let row = -1; row <= 1; row++) {
+      for (let col = -1; col <= 1; col++) {
+        if (cell.y + row >= 0 && cell.x + col >= 0) {
+          if (cell.y + row < rows.length && cell.x + col < rows[0].length) {
+            if (
+              !rows[cell.y + row][cell.x + col].hasMine &&
+              !rows[cell.y + row][cell.x + col].isOpen
+            ) {
+              this.open(rows[cell.y + row][cell.x + col]);
+            }
+          }
+        }
+      }
+    }
   };
 
   render() {
