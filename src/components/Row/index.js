@@ -4,7 +4,7 @@ import Cell from "../Cell";
 // props in Board
 const Row = (props) => {
   let cells = props.cells.map((data, index) => {
-    return <Cell key={index} data={data} open={props.open} />;
+    return <Cell key={index} data={data} open={props.open} flag={props.flag} />;
   });
   return <div className="row"> {cells}</div>;
 };

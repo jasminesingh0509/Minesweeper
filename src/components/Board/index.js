@@ -43,6 +43,10 @@ class Board extends Component {
 
   //function to check if the cell is open
   open = (cell) => {
+    console.log("STATUS: " + this.props.status);
+    if (this.props.status === "ended") {
+      return;
+    }
     // function counts mines around an open cell, using promise.
     let asyncCountMines = new Promise((resolve) => {
       let mines = this.findMines(cell);
@@ -54,17 +58,13 @@ class Board extends Component {
       let rows = this.state.rows;
       let current = rows[cell.y][cell.x];
 
-      if (current.hasMine && this.props.openCells === 0) {
+      if (current.hasMine) {
         console.log("The cell has a mine, you lose. Restart!");
-        let newRows = this.createBoard(this.props);
-        this.setState(
-          {
-            rows: newRows,
-          },
-          () => {
-            this.open(cell);
-          }
-        );
+        console.log(current.hasMine);
+        this.open(cell);
+        this.props.endGame();
+        current.isOpen = true;
+        this.props.openCellClick();
       } else {
         if (!cell.hasFlag && !current.isOpen) {
           this.props.openCellClick();
@@ -76,9 +76,22 @@ class Board extends Component {
           if (!current.hasMine && numberOfMines === 0) {
             this.findAroundCell(cell);
           }
+          if (cell.hasMine && this.props.openCells !== 0) {
+            this.props.endGame();
+          }
         }
       }
     });
+  };
+
+  flag = (cell) => {
+    if (this.props.status === "ended") {
+      return;
+    }
+    let rows = this.state.rows;
+    cell.hasFlag = !cell.hasFlag;
+    this.setState({ rows });
+    this.props.changeFlagAmount(cell.hasFlag ? -1 : 1);
   };
 
   //function to check if mines are surrounding a single cell
@@ -126,7 +139,7 @@ class Board extends Component {
 
   render() {
     let rows = this.state.rows.map((row, index) => {
-      return <Row cells={row} key={index} open={this.open} />;
+      return <Row cells={row} key={index} open={this.open} flag={this.flag} />;
     });
     return <div className="board"> {rows}</div>;
   }

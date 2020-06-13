@@ -19,6 +19,15 @@ class Minesweeper extends Component {
     time: 0,
   };
 
+  endGame = () => {
+    this.setState({
+      status: "ended",
+    });
+  };
+
+  componentWillMount() {
+    this.intervals = [];
+  }
   //function to add time when game is running
   tick = () => {
     if (this.state.openCells > 0 && this.state.status === "running") {
@@ -33,6 +42,7 @@ class Minesweeper extends Component {
 
   // function to handle when a cell is clicked on, check time and status
   handleCellClick = () => {
+    //console.log("click", this.state);
     if (this.state.openCells === 0 && this.state.status !== "running") {
       this.setState(
         {
@@ -43,9 +53,15 @@ class Minesweeper extends Component {
         }
       );
     }
+    // add this to stop timer, but now game wont restart when I hit a mine.
     this.setState((prevState) => {
       return { openCells: prevState.openCells + 1 };
     });
+  };
+
+  //reduce the amount of flags available.
+  changeFlagAmount = (amount) => {
+    this.setState({ flags: this.state.flags + amount });
   };
 
   render() {
@@ -59,6 +75,9 @@ class Minesweeper extends Component {
           mines={this.state.mines}
           openCells={this.state.openCells}
           openCellClick={this.handleCellClick}
+          endGame={this.endGame}
+          changeFlagAmount={this.changeFlagAmount}
+          status={this.state.status}
         />
       </div>
     );
