@@ -21,9 +21,26 @@ class Minesweeper extends Component {
   }
 
   endGame = () => {
-    this.setState({
-      status: "ended",
-    });
+    this.setState(
+      {
+        status: "ended",
+      },
+      alert("You Lose, reset!")
+    );
+  };
+
+  checkForWinner = () => {
+    if (
+      this.state.flags + this.state.openCells >=
+      this.state.columns * this.state.rows
+    ) {
+      this.setState(
+        {
+          status: "winner",
+        },
+        alert("You Win!")
+      );
+    }
   };
 
   //reset the board, when you loose, clear intervals
@@ -32,9 +49,6 @@ class Minesweeper extends Component {
     this.setState(Object.assign({}, this.baseState));
   };
 
-  componentWillMount() {
-    this.intervals = [];
-  }
   //function to add time when game is running
   tick = () => {
     if (this.state.openCells > 0 && this.state.status === "running") {
@@ -49,7 +63,6 @@ class Minesweeper extends Component {
 
   // function to handle when a cell is clicked on, check time and status
   handleCellClick = () => {
-    //console.log("click", this.state);
     if (this.state.openCells === 0 && this.state.status !== "running") {
       this.setState(
         {
@@ -60,6 +73,7 @@ class Minesweeper extends Component {
         }
       );
     }
+
     // add this to stop timer
     this.setState((prevState) => {
       return { openCells: prevState.openCells + 1 };

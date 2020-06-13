@@ -54,7 +54,6 @@ class Board extends Component {
 
   //function to check if the cell is open
   open = (cell) => {
-    console.log("STATUS: " + this.props.status);
     if (this.props.status === "ended") {
       return;
     }
