@@ -53,7 +53,7 @@ class Minesweeper extends Component {
         }
       );
     }
-    // add this to stop timer, but now game wont restart when I hit a mine.
+    // add this to stop timer
     this.setState((prevState) => {
       return { openCells: prevState.openCells + 1 };
     });
