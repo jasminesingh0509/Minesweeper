@@ -22,6 +22,7 @@ const Cell = (props) => {
           <div
             className="cell open"
             onClick={() => props.open(props.data)}
+            // puts a flag in the cell when right click instead of showing menu
             onContextMenu={(e) => {
               e.preventDefault();
               props.flag(props.data);
@@ -33,6 +34,7 @@ const Cell = (props) => {
           <div
             className="cell open"
             onClick={() => props.open(props.data)}
+            // puts a flag in the cell when right click instead of showing menu
             onContextMenu={(e) => {
               e.preventDefault();
               props.flag(props.data);
@@ -48,6 +50,7 @@ const Cell = (props) => {
         <div
           className="cell open"
           onClick={() => props.open(props.data)}
+          // puts a flag in the cell when right click instead of showing menu
           onContextMenu={(e) => {
             e.preventDefault();
             props.flag(props.data);
@@ -61,6 +64,7 @@ const Cell = (props) => {
         <div
           className="cell"
           onClick={() => props.open(props.data)}
+          // puts a flag in the cell when right click instead of showing menu
           onContextMenu={(e) => {
             e.preventDefault();
             props.flag(props.data);

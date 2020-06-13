@@ -8,6 +8,17 @@ class Board extends Component {
       rows: this.createBoard(props),
     };
   }
+  //passing the state to the reset
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.props.openCells > nextProps.openCells ||
+      this.props.columns !== nextProps.columns
+    ) {
+      this.setState({
+        rows: this.createBoard(nextProps),
+      });
+    }
+  }
   //nested for loop to add colums at each row
   createBoard = (props) => {
     let board = [];
@@ -88,10 +99,13 @@ class Board extends Component {
     if (this.props.status === "ended") {
       return;
     }
-    let rows = this.state.rows;
-    cell.hasFlag = !cell.hasFlag;
-    this.setState({ rows });
-    this.props.changeFlagAmount(cell.hasFlag ? -1 : 1);
+
+    if (!cell.isOpen) {
+      let rows = this.state.rows;
+      cell.hasFlag = !cell.hasFlag;
+      this.setState({ rows });
+      this.props.changeFlagAmount(cell.hasFlag ? -1 : 1);
+    }
   };
 
   //function to check if mines are surrounding a single cell

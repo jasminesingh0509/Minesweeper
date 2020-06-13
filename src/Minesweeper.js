@@ -7,22 +7,29 @@ class Minesweeper extends Component {
   constructor() {
     super();
     this.intervals = [];
-  }
 
-  state = {
-    rows: 16,
-    columns: 16,
-    flags: 10,
-    mines: 40,
-    status: "waiting",
-    openCells: 0,
-    time: 0,
-  };
+    this.state = {
+      rows: 16,
+      columns: 16,
+      flags: 10,
+      mines: 40,
+      status: "waiting",
+      openCells: 0,
+      time: 0,
+    };
+    this.baseState = this.state;
+  }
 
   endGame = () => {
     this.setState({
       status: "ended",
     });
+  };
+
+  //reset the board, when you loose, clear intervals
+  reset = () => {
+    this.intervals.map(clearInterval);
+    this.setState(Object.assign({}, this.baseState));
   };
 
   componentWillMount() {
@@ -68,7 +75,11 @@ class Minesweeper extends Component {
     return (
       <div className="minesweeper">
         {/* <h1>Minesweeper</h1> */}
-        <BoardHead time={this.state.time} flagCount={this.state.flags} />
+        <BoardHead
+          time={this.state.time}
+          flagCount={this.state.flags}
+          reset={this.reset}
+        />
         <Board
           rows={this.state.rows}
           columns={this.state.columns}
