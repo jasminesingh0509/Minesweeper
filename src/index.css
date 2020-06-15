@@ -7,6 +7,7 @@ body #root {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
 .minesweeper {
   align-items: center;
   text-align: center;
@@ -15,10 +16,9 @@ body #root {
 .board {
   background-color: olivedrab;
   width: 700px;
-
   border: 1px solid #444;
   border-bottom: none;
-  font-size: x-large;
+  font-size: xx-large;
 }
 
 .board .row {
@@ -38,9 +38,21 @@ body #root {
 
 .board .row .cell.open {
   background-color: rgba(240, 169, 108, 0.781);
-  font-size: x-large;
-  color: blue;
+}
 
+.board .row .cell.open1 {
+  background-color: rgba(240, 169, 108, 0.781);
+  color: blue;
+}
+
+.board .row .cell.open2 {
+  background-color: rgba(240, 169, 108, 0.781);
+  color: rgb(1, 155, 1);
+}
+
+.board .row .cell.open3 {
+  background-color: rgba(240, 169, 108, 0.781);
+  color: red;
 }
 
 .board .row .cell.open:hover {
@@ -67,14 +79,14 @@ body #root {
 }
 
 .reset {
-
-  font-size: 25px;
   background-color: antiquewhite;
-  ;
+  border-radius: 15px;
+  color: black;
+  font-size: xx-large;
 }
 
 .flag-count {
-  widows: 55px;
+  padding-left: 18px;
   height: 35px;
   display: flex;
   justify-content: center;
@@ -82,7 +94,7 @@ body #root {
 }
 
 .timer {
-  widows: 55px;
+  padding-right: 18px;
   height: 35px;
   display: flex;
   justify-content: center;

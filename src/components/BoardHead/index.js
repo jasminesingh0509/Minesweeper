@@ -16,7 +16,7 @@ const BoardHead = (props) => {
       </button>
       <div className="timer">
         {" "}
-        <span></span>🕘{time}
+        <span></span>🕘 {time}
       </div>
     </div>
   );

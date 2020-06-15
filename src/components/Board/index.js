@@ -65,13 +65,12 @@ class Board extends Component {
     });
 
     asyncCountMines.then((numberOfMines) => {
-      console.log("Be careful", numberOfMines, "mines near by!");
+      // console.log("Be careful", numberOfMines, "mines near by!");
       let rows = this.state.rows;
       let current = rows[cell.y][cell.x];
 
       if (current.hasMine) {
-        console.log("The cell has a mine, you lose. Restart!");
-        console.log(current.hasMine);
+        // console.log("The cell has a mine, you lose. Restart!");
         this.open(cell);
         this.props.endGame();
         current.isOpen = true;

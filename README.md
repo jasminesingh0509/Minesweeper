@@ -2,11 +2,13 @@
 
 ## Description
 
-1 player Minesweeper Game using React. 40 bombs hidden in a 16X16 grid. 40 flags available.
+1 player Minesweeper Game using React. 40 bombs hidden in a 16X16 grid. Let clikc to open a cell. Right click on a cell to place a flag, 40 flags available.
 
 ## Setup
 
-Install dependencies with `npm install`.
+```sh
+npm install
+```
 
 ## Running Webpack Development Server
 
@@ -26,6 +28,6 @@ npm test
 
 1.0.0
 
-## Authors
+## Author
 
 Jasmine Singh

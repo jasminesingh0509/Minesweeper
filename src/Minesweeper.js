@@ -25,7 +25,7 @@ class Minesweeper extends Component {
       {
         status: "ended",
       },
-      alert("You Lose, reset!")
+      alert("GAME OVER!")
     );
   };
 
