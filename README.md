@@ -6,7 +6,7 @@
 
 ## Setup
 
-Install dependencies with `npm install`.
+```npm install```
 
 ## Running Webpack Development Server
 
