@@ -8,9 +8,6 @@ body #root {
 }
 
 .minesweeper {
-  width: 700px;
-  height: 950px;
-  border: 1px solid black;
   align-items: center;
   text-align: center;
 }
@@ -18,7 +15,7 @@ body #root {
 .board {
   background-color: olivedrab;
   width: 700px;
-  height: 800px;
+
   border: 1px solid #444;
   border-bottom: none;
   font-size: x-large;
