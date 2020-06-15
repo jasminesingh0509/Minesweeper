@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Row from "../Row";
 
+//passed to minesweeper
 class Board extends Component {
   constructor(props) {
     super(props);
@@ -94,11 +95,11 @@ class Board extends Component {
     });
   };
 
+  // if a cell is not open, add a flag ans decrememnt the amount of flags left
   flag = (cell) => {
     if (this.props.status === "ended") {
       return;
     }
-
     if (!cell.isOpen) {
       let rows = this.state.rows;
       cell.hasFlag = !cell.hasFlag;

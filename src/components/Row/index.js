@@ -1,7 +1,8 @@
 import React from "react";
 import Cell from "../Cell";
 
-// props in Board
+//stateless componenet
+// row is passed to board
 const Row = (props) => {
   let cells = props.cells.map((data, index) => {
     return <Cell key={index} data={data} open={props.open} flag={props.flag} />;

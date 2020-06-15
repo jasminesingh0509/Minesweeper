@@ -1,5 +1,6 @@
 import React from "react";
 
+//passed to minesweeper
 //stateless componenet
 const BoardHead = (props) => {
   let minutes = Math.floor(props.time / 60) || 0;
@@ -13,7 +14,10 @@ const BoardHead = (props) => {
       <button className="reset" onClick={props.reset}>
         Reset
       </button>
-      <div className="timer"> 🕘{time}</div>
+      <div className="timer">
+        {" "}
+        <span></span>🕘{time}
+      </div>
     </div>
   );
 };

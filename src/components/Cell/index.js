@@ -1,5 +1,7 @@
 import React from "react";
 
+//stateless componenet
+//cell is passed to row
 const Cell = (props) => {
   let renderCell = () => {
     if (props.data.isOpen) {
