@@ -11,7 +11,7 @@ class Minesweeper extends Component {
     this.state = {
       rows: 16,
       columns: 16,
-      flags: 10,
+      flags: 40,
       mines: 40,
       status: "waiting",
       openCells: 0,

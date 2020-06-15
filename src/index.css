@@ -21,6 +21,7 @@ body #root {
   height: 800px;
   border: 1px solid #444;
   border-bottom: none;
+  font-size: x-large;
 }
 
 .board .row {
@@ -28,10 +29,6 @@ body #root {
   height: 49px;
 }
 
-/* .board .row:last-child {
-  border-bottom: none;
-  height: 50px;
-} */
 
 .board .row .cell {
   border-right: 1px solid #444;
@@ -43,15 +40,18 @@ body #root {
 }
 
 .board .row .cell.open {
-  background-color: #d4d4d4;
+  background-color: rgba(240, 169, 108, 0.781);
+  font-size: x-large;
+  color: blue;
+
 }
 
 .board .row .cell.open:hover {
-  background-color: #d4d4d4;
+  background-color: rgba(243, 188, 140, 0.959);
 }
 
 .board .row .cell:hover {
-  background-color: #eeeeee;
+  background-color: rgba(243, 188, 140, 0.959);
 }
 
 .board .row .cell:last-child {
@@ -65,11 +65,15 @@ body #root {
   height: 90px;
   justify-content: space-between;
   align-items: center;
+  font-size: xx-large;
+  color: antiquewhite;
 }
 
 .reset {
 
   font-size: 25px;
+  background-color: antiquewhite;
+  ;
 }
 
 .flag-count {

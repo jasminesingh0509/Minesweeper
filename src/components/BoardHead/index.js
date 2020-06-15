@@ -9,11 +9,11 @@ const BoardHead = (props) => {
   let time = `${minutes}:${formattedSecs}`;
   return (
     <div className="board-head">
-      <div className="flag-count">{props.flagCount}</div>
+      <div className="flag-count"> {props.flagCount} 🚩</div>
       <button className="reset" onClick={props.reset}>
         Reset
       </button>
-      <div className="timer">{time}</div>
+      <div className="timer"> 🕘{time}</div>
     </div>
   );
 };

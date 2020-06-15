@@ -13,7 +13,7 @@ const Cell = (props) => {
             }}
           >
             {" "}
-            Mine
+            💣
           </div>
         );
       }
@@ -48,7 +48,7 @@ const Cell = (props) => {
     } else if (props.data.hasFlag) {
       return (
         <div
-          className="cell open"
+          className="cell"
           onClick={() => props.open(props.data)}
           // puts a flag in the cell when right click instead of showing menu
           onContextMenu={(e) => {
@@ -56,7 +56,8 @@ const Cell = (props) => {
             props.flag(props.data);
           }}
         >
-          Flag
+          {" "}
+          🚩
         </div>
       );
     } else {
