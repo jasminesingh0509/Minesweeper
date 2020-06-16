@@ -13,7 +13,7 @@ class Minesweeper extends Component {
       columns: 16,
       flags: 40,
       mines: 40,
-      status: "waiting",
+      status: "waiting", //status can be waiting runnning or ended
       openCells: 0,
       time: 0,
     };
@@ -26,28 +26,13 @@ class Minesweeper extends Component {
     });
   };
 
-  //not sure if this works yet
-  checkForWinner = () => {
-    if (
-      this.state.flags + this.state.openCells >=
-      this.state.columns * this.state.rows
-    ) {
-      this.setState(
-        {
-          status: "winner",
-        },
-        alert("You Win!")
-      );
-    }
-  };
-
   //reset the board, when you loose, clear intervals
   reset = () => {
     this.intervals.map(clearInterval);
     this.setState(Object.assign({}, this.baseState));
   };
 
-  //function to add time when game is running
+  //function to add time when game is running, when open cells are greater than 0 start the clock
   tick = () => {
     if (this.state.openCells > 0 && this.state.status === "running") {
       let time = this.state.time + 1;
@@ -59,7 +44,7 @@ class Minesweeper extends Component {
     this.intervals.push(setInterval(fn, t));
   };
 
-  // function to handle when a cell is clicked on, check time and status
+  // function to handle when a cell is clicked on, check time and status, this function is passed into board
   handleCellClick = () => {
     if (this.state.openCells === 0 && this.state.status !== "running") {
       this.setState(
@@ -67,6 +52,7 @@ class Minesweeper extends Component {
           status: "running",
         },
         () => {
+          //starts the clock
           this.setInterval(this.tick, 1000);
         }
       );

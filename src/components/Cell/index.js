@@ -10,6 +10,7 @@ const Cell = (props) => {
       e.preventDefault();
       props.flag(props.data);
     };
+    //this is conditioning for the checkered background
     let rowIsEven = props.data.y % 2 === 0;
     let columnIsEven = props.data.x % 2 === 0;
     let lighter = (rowIsEven && columnIsEven) || (!rowIsEven && !columnIsEven);
