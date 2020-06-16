@@ -21,14 +21,12 @@ class Minesweeper extends Component {
   }
 
   endGame = () => {
-    this.setState(
-      {
-        status: "ended",
-      },
-      alert("GAME OVER!")
-    );
+    this.setState({
+      status: "ended",
+    });
   };
 
+  //not sure if this works yet
   checkForWinner = () => {
     if (
       this.state.flags + this.state.openCells >=
@@ -88,7 +86,6 @@ class Minesweeper extends Component {
   render() {
     return (
       <div className="minesweeper">
-        {/* <h1>Minesweeper</h1> */}
         <BoardHead
           time={this.state.time}
           flagCount={this.state.flags}
@@ -101,6 +98,7 @@ class Minesweeper extends Component {
           openCells={this.state.openCells}
           openCellClick={this.handleCellClick}
           endGame={this.endGame}
+          gameOver={this.state.status === "ended"}
           changeFlagAmount={this.changeFlagAmount}
           status={this.state.status}
         />

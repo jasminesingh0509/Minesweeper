@@ -128,3 +128,12 @@ body #root {
   justify-content: center;
   align-items: center;
 }
+
+.game-over {
+  position: absolute;
+  width: 702px;
+  height: 785px;
+  background-color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  line-height: 700px;
+}

@@ -12,18 +12,10 @@ const Cell = (props) => {
     };
     let rowIsEven = props.data.y % 2 === 0;
     let columnIsEven = props.data.x % 2 === 0;
-    let lighter;
-
-    if (rowIsEven && columnIsEven) {
-      lighter = true;
-    } else if (!rowIsEven && !columnIsEven) {
-      lighter = true;
-    } else {
-      lighter = false;
-    }
+    let lighter = (rowIsEven && columnIsEven) || (!rowIsEven && !columnIsEven);
 
     if (props.data.isOpen) {
-      className = "cell open";
+      className += " open";
 
       if (props.data.hasMine) {
         content = <span role="img"> 💣</span>;
@@ -34,19 +26,15 @@ const Cell = (props) => {
         content = props.data.count;
         className += props.data.count;
       }
-      if (lighter) {
-        className += " lighter";
-      }
     } else {
       // If closed
       if (props.data.hasFlag) {
         content = <span role="img"> 🚩</span>;
       }
-      if (lighter) {
-        className += " lighter";
-      } else {
-        className = "cell";
-      }
+    }
+
+    if (lighter) {
+      className += " lighter";
     }
 
     return (

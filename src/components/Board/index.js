@@ -55,6 +55,7 @@ class Board extends Component {
 
   //function to check if the cell is open
   open = (cell) => {
+    console.log("OPEN!");
     if (this.props.status === "ended") {
       return;
     }
@@ -71,10 +72,10 @@ class Board extends Component {
 
       if (current.hasMine) {
         // console.log("The cell has a mine, you lose. Restart!");
-        this.open(cell);
-        this.props.endGame();
         current.isOpen = true;
-        this.props.openCellClick();
+        //this.props.openCellClick();
+        //this.open(cell);
+        this.props.endGame();
       } else {
         if (!cell.hasFlag && !current.isOpen) {
           this.props.openCellClick();
@@ -154,7 +155,19 @@ class Board extends Component {
     let rows = this.state.rows.map((row, index) => {
       return <Row cells={row} key={index} open={this.open} flag={this.flag} />;
     });
-    return <div className="board"> {rows}</div>;
+
+    let gameOver = this.props.gameOver ? (
+      <div className="game-over"> Game Over 👎🏽 Click Reset to start again!</div>
+    ) : (
+      ""
+    );
+
+    return (
+      <div className="board">
+        {gameOver}
+        {rows}
+      </div>
+    );
   }
 }
 export default Board;
