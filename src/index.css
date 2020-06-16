@@ -11,6 +11,7 @@ body #root {
 .minesweeper {
   align-items: center;
   text-align: center;
+  border-bottom: 1px solid #444
 }
 
 .board {
@@ -28,12 +29,10 @@ body #root {
 
 .board .row .cell {
   background-color: olivedrab;
-  border-right: 1px solid #444;
   width: 49px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #444;
 }
 
 .board .row .cell.lighter {
@@ -44,8 +43,17 @@ body #root {
   background-color: rgba(240, 169, 108, 0.781);
 }
 
+.board .row .cell.open.lighter {
+  background-color: rgba(242, 188, 141, 0.781);
+}
+
 .board .row .cell.open1 {
   background-color: rgba(240, 169, 108, 0.781);
+  color: blue;
+}
+
+.board .row .cell.open1.lighter {
+  background-color: rgba(242, 188, 141, 0.781);
   color: blue;
 }
 
@@ -54,21 +62,37 @@ body #root {
   color: rgb(1, 155, 1);
 }
 
+.board .row .cell.open2.lighter {
+  background-color: rgba(242, 188, 141, 0.781);
+  color: blue;
+}
+
 .board .row .cell.open3 {
   background-color: rgba(240, 169, 108, 0.781);
   color: red;
 }
 
+.board .row .cell.open3.lighter {
+  background-color: rgba(242, 188, 141, 0.781);
+  color: red;
+}
+
+.board .row .cell.open4 {
+  background-color: rgba(240, 169, 108, 0.781);
+  color: purple
+}
+
+.board .row .cell.open4.lighter {
+  background-color: rgba(242, 188, 141, 0.781);
+  color: purple;
+}
+
 .board .row .cell.open:hover {
-  background-color: rgba(243, 188, 140, 0.959);
+  background-color: orange;
 }
 
 .board .row .cell:hover {
-  background-color: rgba(243, 188, 140, 0.959);
-}
-
-.board .row .cell:last-child {
-  border-right: none;
+  background-color: orange;
 }
 
 .board-head {
