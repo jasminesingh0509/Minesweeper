@@ -9,6 +9,8 @@ class Board extends Component {
       rows: this.createBoard(props),
     };
   }
+
+  //--------------------------------------Functions------------------------------
   //passing the state to the reset
   componentWillReceiveProps(nextProps) {
     if (
@@ -154,6 +156,7 @@ class Board extends Component {
     }
   };
 
+  //---------------------------------Render------------------------------------------
   render() {
     let rows = this.state.rows.map((row, index) => {
       return <Row cells={row} key={index} open={this.open} flag={this.flag} />;

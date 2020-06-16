@@ -8,6 +8,8 @@ const BoardHead = (props) => {
 
   let formattedSecs = seconds < 10 ? `0${seconds}` : seconds;
   let time = `${minutes}:${formattedSecs}`;
+
+  //-----------------------------return---------------------------------------
   return (
     <div className="board-head">
       <div className="flag-count"> {props.flagCount} 🚩</div>

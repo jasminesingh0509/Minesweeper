@@ -20,6 +20,7 @@ class Minesweeper extends Component {
     this.baseState = this.state;
   }
 
+  //----------------------------------Functions--------------------------------------
   endGame = () => {
     this.setState({
       status: "ended",
@@ -69,6 +70,7 @@ class Minesweeper extends Component {
     this.setState({ flags: this.state.flags + amount });
   };
 
+  //-----------------------------------Render------------------------------------------
   render() {
     return (
       <div className="minesweeper">
