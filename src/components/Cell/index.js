@@ -4,128 +4,55 @@ import React from "react";
 //cell is passed to row
 const Cell = (props) => {
   let renderCell = () => {
+    let className = "cell";
+    let content = "";
+    let onContextMenu = (e) => {
+      e.preventDefault();
+      props.flag(props.data);
+    };
+    let rowIsEven = props.data.y % 2 === 0;
+    let columnIsEven = props.data.x % 2 === 0;
+
     if (props.data.isOpen) {
       if (props.data.hasMine) {
-        return (
-          <div
-            className="cell open"
-            onClick={() => props.open(props.data)}
-            onContextMenu={(e) => {
-              e.preventDefault();
-            }}
-          >
-            {" "}
-            💣
-          </div>
-        );
-      }
-      if (props.data.count === 0) {
-        return (
-          <div
-            className="cell open"
-            onClick={() => props.open(props.data)}
-            // puts a flag in the cell when right click instead of showing menu
-            onContextMenu={(e) => {
-              e.preventDefault();
-              props.flag(props.data);
-            }}
-          ></div>
-        );
-      }
-      // if count is count 1 colour is blue
-      if (props.data.count === 1) {
-        return (
-          <div
-            className="cell open1"
-            onClick={() => props.open(props.data)}
-            // puts a flag in the cell when right click instead of showing menu
-            onContextMenu={(e) => {
-              e.preventDefault();
-              props.flag(props.data);
-            }}
-          >
-            {" "}
-            {props.data.count}
-          </div>
-        );
-      }
-      // if count is count 2 colour is green
-      if (props.data.count === 2) {
-        return (
-          <div
-            className="cell open2"
-            onClick={() => props.open(props.data)}
-            // puts a flag in the cell when right click instead of showing menu
-            onContextMenu={(e) => {
-              e.preventDefault();
-              props.flag(props.data);
-            }}
-          >
-            {" "}
-            {props.data.count}
-          </div>
-        );
-      }
-      // if count is count 3 colour is red
-      if (props.data.count === 3) {
-        return (
-          <div
-            className="cell open3"
-            onClick={() => props.open(props.data)}
-            // puts a flag in the cell when right click instead of showing menu
-            onContextMenu={(e) => {
-              e.preventDefault();
-              props.flag(props.data);
-            }}
-          >
-            {" "}
-            {props.data.count}
-          </div>
-        );
+        className = "cell open";
+        content = <span role="img"> 💣</span>;
+        onContextMenu = (e) => {
+          e.preventDefault();
+        };
+      } else if (props.data.count === 0) {
+        className = "cell open";
+        content = " ";
+      } else if (props.data.count > 0) {
+        className = "cell open" + props.data.count;
+        content = props.data.count;
       } else {
-        return (
-          <div
-            className="cell open"
-            onClick={() => props.open(props.data)}
-            // puts a flag in the cell when right click instead of showing menu
-            onContextMenu={(e) => {
-              e.preventDefault();
-              props.flag(props.data);
-            }}
-          >
-            {" "}
-            {props.data.count}
-          </div>
-        );
+        className = "cell open ";
+        content = "";
       }
-    } else if (props.data.hasFlag) {
-      return (
-        <div
-          className="cell"
-          onClick={() => props.open(props.data)}
-          // puts a flag in the cell when right click instead of showing menu
-          onContextMenu={(e) => {
-            e.preventDefault();
-            props.flag(props.data);
-          }}
-        >
-          {" "}
-          🚩
-        </div>
-      );
     } else {
-      return (
-        <div
-          className="cell"
-          onClick={() => props.open(props.data)}
-          // puts a flag in the cell when right click instead of showing menu
-          onContextMenu={(e) => {
-            e.preventDefault();
-            props.flag(props.data);
-          }}
-        ></div>
-      );
+      // If closed
+      if (props.data.hasFlag) {
+        content = <span role="img"> 🚩</span>;
+      }
+      if (rowIsEven && columnIsEven) {
+        className += " lighter";
+      } else if (rowIsEven && !columnIsEven) {
+        className = "cell";
+      } else if (!rowIsEven && !columnIsEven) {
+        className += " lighter";
+      }
     }
+
+    return (
+      <div
+        className={className}
+        onClick={() => props.open(props.data)}
+        onContextMenu={onContextMenu}
+      >
+        {content}
+      </div>
+    );
   };
   return renderCell();
 };

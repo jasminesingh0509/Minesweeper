@@ -14,7 +14,6 @@ body #root {
 }
 
 .board {
-  background-color: olivedrab;
   width: 700px;
   border: 1px solid #444;
   border-bottom: none;
@@ -28,12 +27,17 @@ body #root {
 
 
 .board .row .cell {
+  background-color: olivedrab;
   border-right: 1px solid #444;
   width: 49px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #444;
+}
+
+.board .row .cell.lighter {
+  background-color: rgb(148, 172, 101);
 }
 
 .board .row .cell.open {
