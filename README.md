@@ -31,3 +31,8 @@ npm test
 ## Author
 
 Jasmine Singh
+
+## Screenshots
+
+Game![“Game Time”](https://github.com/jasminesingh0509/Minesweeper/blob/master/src/docs/minesweeper.png?raw=true)
+Game Over![“Game Over”](https://github.com/jasminesingh0509/Minesweeper/blob/master/src/docs/minesweeper2.png?raw=true)
