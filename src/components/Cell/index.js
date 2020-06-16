@@ -37,7 +37,7 @@ const Cell = (props) => {
     if (lighter) {
       className += " lighter";
     }
-
+    //-----------------------------------------return------------------------------------
     return (
       <div
         className={className}

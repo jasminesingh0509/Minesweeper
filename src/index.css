@@ -11,7 +11,7 @@ body #root {
 .minesweeper {
   align-items: center;
   text-align: center;
-  border-bottom: 1px solid #444
+  border-bottom: 1px solid #444;
 }
 
 .board {
@@ -79,7 +79,7 @@ body #root {
 
 .board .row .cell.open4 {
   background-color: rgba(240, 169, 108, 0.781);
-  color: purple
+  color: purple;
 }
 
 .board .row .cell.open4.lighter {
@@ -129,7 +129,6 @@ body #root {
   justify-content: center;
   align-items: center;
 }
-
 
 /* -----------------------------Game Over---------------------------------------*/
 .game-over {
